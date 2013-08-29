@@ -37,7 +37,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-//        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		self.backgroundColor = [UIColor clearColor];
         
         [self addSubview:self.stateLabel];
@@ -45,7 +44,7 @@
         [self addSubview:self.activityView];
         
         self.isHeaderView = YES;
-        self.offsetY = KREFRESHVIEWMAXOFFSETY;
+//        self.offsetY = KREFRESHVIEWMAXOFFSETY;
         _currentState = XDStateNormal;
     }
     return self;
@@ -58,6 +57,7 @@
     if (self) {
         // Initialization code
         self.isHeaderView = isTop;
+        self.offsetY = KREFRESHVIEWMAXOFFSETY;
     }
     return self;
 }
@@ -72,8 +72,7 @@
         _stateLabel.font = font;
         _stateLabel.textColor = [UIColor blackColor];
         _stateLabel.textAlignment = KTextAlignmentCenter;
-        _stateLabel.backgroundColor = [UIColor yellowColor];
-//        _stateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _stateLabel.backgroundColor = [UIColor clearColor];
     }
     
     return _stateLabel;
@@ -87,8 +86,7 @@
         _dateLabel.font = font;
         _dateLabel.textColor = [UIColor blackColor];
         _dateLabel.textAlignment = KTextAlignmentCenter;
-        _dateLabel.backgroundColor = [UIColor blueColor];
-//        _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _dateLabel.backgroundColor = [UIColor clearColor];
     }
     
     return _dateLabel;
@@ -110,13 +108,11 @@
     if (_isHeaderView != isTop) {
         _isHeaderView = isTop;
         if (_isHeaderView) {
-            _pullingContents = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"下拉刷新",  [NSNumber numberWithInteger:XDStateNormal], @"正在刷新", [NSNumber numberWithInteger:XDStatePulling], @"释放加载最新内容", [NSNumber numberWithInteger:XDStateLoading], @"没有最新内容了哦", [NSNumber numberWithInteger:XDStateHitTheEnd], nil];
+            _pullingContents = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"下拉刷新",  [NSNumber numberWithInteger:XDStateNormal], @"释放加载最新内容", [NSNumber numberWithInteger:XDStatePulling], @"正在刷新", [NSNumber numberWithInteger:XDStateLoading], @"没有最新内容了哦", [NSNumber numberWithInteger:XDStateHitTheEnd], nil];
         }
         else{
-            _pullingContents = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"上拉加载",  [NSNumber numberWithInteger:XDStateNormal], @"正在加载", [NSNumber numberWithInteger:XDStatePulling], @"释放加载更多内容", [NSNumber numberWithInteger:XDStateLoading], @"没有更多内容了哦", [NSNumber numberWithInteger:XDStateHitTheEnd], nil];
+            _pullingContents = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"上拉加载",  [NSNumber numberWithInteger:XDStateNormal], @"释放加载更多内容", [NSNumber numberWithInteger:XDStatePulling], @"正在加载", [NSNumber numberWithInteger:XDStateLoading], @"没有更多内容了哦", [NSNumber numberWithInteger:XDStateHitTheEnd], nil];
         }
-        
-//        [self layoutFrame];
     }
 }
 
@@ -141,9 +137,14 @@
     CGSize size = self.frame.size;
     
     CGFloat verticalMargin = (_offsetY - 2 * labelHeight) / 2;
-    self.stateLabel.frame = CGRectMake(0, verticalMargin, size.width, labelHeight);
-    self.dateLabel.frame = CGRectMake(0, verticalMargin + labelHeight, size.width, labelHeight);
-    self.activityView.frame = CGRectMake(80, verticalMargin, 20.0, 20.0);
+    CGFloat y = verticalMargin;
+    if (_isHeaderView) {
+        y = self.frame.size.height - _offsetY + verticalMargin;
+    }
+    
+    self.stateLabel.frame = CGRectMake(0, y, size.width, labelHeight);
+    self.dateLabel.frame = CGRectMake(0, y + labelHeight, size.width, labelHeight);
+    self.activityView.frame = CGRectMake(80, y, 20.0, 20.0);
     
     self.stateLabel.text = [_pullingContents objectForKey:[NSNumber numberWithInteger:_currentState]];
 }

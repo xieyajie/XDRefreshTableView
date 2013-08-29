@@ -29,6 +29,11 @@
     _tableView = [[XDRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain pullDelegate:self];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+    _tableView.separatorAdapterContent = NO;
+    _tableView.showHeaderPulling = YES;
+    _tableView.showFooterPulling = YES;
+    
     [self.view addSubview:_tableView];
 }
 
@@ -54,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20 * _pageCount;
+    return 2 * _pageCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,13 +92,13 @@
 //下拉加载上一天
 - (void)pullingTableViewDidStartRefreshing:(XDRefreshTableView *)tableView
 {
-    [self refresh];
+    [self performSelector:@selector(refresh) withObject:nil afterDelay:1.0f];
 }
 
 //上拉加载
 - (void)pullingTableViewDidStartLoading:(XDRefreshTableView *)tableView
 {
-    [self load];
+    [self performSelector:@selector(load) withObject:nil afterDelay:1.0f];
 }
 
 #pragma mark - private

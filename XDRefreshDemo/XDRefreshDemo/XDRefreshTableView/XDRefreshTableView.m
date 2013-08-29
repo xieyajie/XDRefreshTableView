@@ -29,22 +29,22 @@
 
 @synthesize separatorAdapterContent = _separatorAdapterContent;
 
-//- (id)initWithFrame:(CGRect)frame
-//{
-//    self = [self initWithFrame:frame style:UITableViewStylePlain];
-//    if (self) {
-//        // Initialization code
-//    }
-//    
-//    return self;
-//}
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [self initWithFrame:frame style:UITableViewStylePlain];
+    if (self) {
+        // Initialization code
+    }
+    
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     self = [super initWithFrame:frame style:style];
     if (self) {
         // Initialization code
-        _headerPullingView = [[XDPullingView alloc] initWithFrame:CGRectMake(0, -KREFRESHVIEWMAXOFFSETY, frame.size.width, frame.size.height) atViewTop:YES];
+        _headerPullingView = [[XDPullingView alloc] initWithFrame:CGRectMake(0, -frame.size.height, frame.size.width, frame.size.height) atViewTop:YES];
         
         _footerPullingView = [[XDPullingView alloc] initWithFrame:CGRectMake(0, frame.size.height, frame.size.width, frame.size.height) atViewTop:NO];
         
@@ -52,8 +52,8 @@
         
         self.headerOffsetY = KREFRESHVIEWMAXOFFSETY;
         self.footerOffsetY = KREFRESHVIEWMAXOFFSETY;
-        self.showHeaderPulling = YES;
-        self.showFooterPulling = YES;
+        self.showHeaderPulling = NO;
+        self.showFooterPulling = NO;
     }
     return self;
 }
@@ -68,6 +68,17 @@
     
     return self;
 }
+
+
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+     [super drawRect:rect];
+     
+     
+ }
 
 #pragma mark - set
 
@@ -109,6 +120,7 @@
         offsetY *= -1;
     }
     
+    _headerOffsetY = offsetY;
     if (offsetY > KREFRESHVIEWMINOFFSETY && offsetY < KREFRESHVIEWMAXOFFSETY) {
         if (_headerPullingView.offsetY != offsetY) {
             _headerPullingView.offsetY = offsetY;
@@ -122,6 +134,7 @@
         offsetY *= -1;
     }
     
+    _footerOffsetY = offsetY;
     if (offsetY > KREFRESHVIEWMINOFFSETY && offsetY < KREFRESHVIEWMAXOFFSETY) {
         if (_footerPullingView.offsetY != offsetY) {
             _footerPullingView.offsetY = offsetY;
@@ -151,7 +164,12 @@
 {
     if ([keyPath isEqualToString:@"contentSize"]) {
         if (_showFooterPulling) {
-            _footerPullingView.frame = CGRectMake(0, self.contentSize.height, self.frame.size.width, self.frame.size.height);
+            CGFloat y = self.frame.size.height;
+            if (y < self.contentSize.height) {
+                y = self.contentSize.height;
+            }
+            
+            _footerPullingView.frame = CGRectMake(0, y, self.frame.size.width, self.frame.size.height);
         }
     }
 }
@@ -184,6 +202,9 @@
         }
         
         CGFloat bottomMargin = offsetY + viewSize.height - contentSize.height;
+        if (contentSize.height < viewSize.height) {
+            bottomMargin = offsetY;
+        }
         if (bottomMargin > _footerOffsetY) {
             _footerPullingView.currentState = XDStatePulling;
         }
@@ -209,7 +230,7 @@
             _headerPullingView.currentState = XDStateLoading;
             
             [UIView animateWithDuration:0.5f animations:^{
-                self.contentOffset = CGPointMake(0, -1 * _headerOffsetY);
+                self.contentInset = UIEdgeInsetsMake(_headerOffsetY, 0, 0, 0);
             }];
             
             if (_pullDelegate && [_pullDelegate respondsToSelector:@selector(pullingTableViewDidStartRefreshing:)]) {
@@ -226,8 +247,8 @@
         if (_footerPullingView.currentState == XDStatePulling) {
             _footerPullingView.currentState = XDStateLoading;
             
-            [UIView animateWithDuration:1.5f animations:^{
-                self.contentOffset = CGPointMake(0, contentSize.height + _footerOffsetY - viewSize.height);
+            [UIView animateWithDuration:0.5f animations:^{
+                self.contentInset = UIEdgeInsetsMake(-_footerOffsetY, 0, 0, 0);
             }];
             
             if (_pullDelegate && [_pullDelegate respondsToSelector:@selector(pullingTableViewDidStartLoading:)]) {
@@ -251,8 +272,8 @@
             }
             [_headerPullingView updateRefreshDate:date];
             
-            [UIView animateWithDuration:5.0f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.contentOffset = CGPointMake(0, 0);
+            [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
             } completion:^(BOOL finish){
                 completion(finish);
             }];
@@ -273,8 +294,8 @@
             }
             [_footerPullingView updateRefreshDate:date];
             
-            [UIView animateWithDuration:1.0f delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                self.contentOffset = CGPointMake(0, self.contentSize.height - self.frame.size.height);
+            [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
             } completion:^(BOOL finish){
                 completion(finish);
             }];
@@ -290,7 +311,7 @@
     }
     
     [UIView animateWithDuration:0.5f animations:^{
-        [self setContentOffset:CGPointMake(0, -1 *_headerOffsetY) animated:YES];
+        self.contentInset = UIEdgeInsetsMake(_headerOffsetY, 0, 0, 0);
     } completion:^(BOOL finish){
         completion(finish);
     }];
