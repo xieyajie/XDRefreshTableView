@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A35C20317CEFE1D001B3A03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20217CEFE1D001B3A03 /* Foundation.framework */; };
+		3A35C20517CEFE1D001B3A03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20417CEFE1D001B3A03 /* CoreGraphics.framework */; };
+		3A35C20717CEFE1D001B3A03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20617CEFE1D001B3A03 /* UIKit.framework */; };
+		3A35C20D17CEFE1D001B3A03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A35C20B17CEFE1D001B3A03 /* InfoPlist.strings */; };
+		3A35C20F17CEFE1D001B3A03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C20E17CEFE1D001B3A03 /* main.m */; };
+		3A35C21317CEFE1D001B3A03 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C21217CEFE1D001B3A03 /* DXAppDelegate.m */; };
+		3A35C21617CEFE1D001B3A03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A35C21417CEFE1D001B3A03 /* Main.storyboard */; };
+		3A35C21917CEFE1D001B3A03 /* DXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C21817CEFE1D001B3A03 /* DXViewController.m */; };
+		3A35C21B17CEFE1D001B3A03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A35C21A17CEFE1D001B3A03 /* Images.xcassets */; };
+		3A35C22217CEFE1D001B3A03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C22117CEFE1D001B3A03 /* XCTest.framework */; };
+		3A35C22317CEFE1D001B3A03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20217CEFE1D001B3A03 /* Foundation.framework */; };
+		3A35C22417CEFE1D001B3A03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20617CEFE1D001B3A03 /* UIKit.framework */; };
+		3A35C22C17CEFE1D001B3A03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A35C22A17CEFE1D001B3A03 /* InfoPlist.strings */; };
+		3A35C22E17CEFE1D001B3A03 /* XDRefreshDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C22D17CEFE1D001B3A03 /* XDRefreshDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A35C22517CEFE1D001B3A03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A35C1F717CEFE1D001B3A03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A35C1FE17CEFE1D001B3A03;
+			remoteInfo = XDRefreshDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A35C1FF17CEFE1D001B3A03 /* XDRefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDRefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A35C20217CEFE1D001B3A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3A35C20417CEFE1D001B3A03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3A35C20617CEFE1D001B3A03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3A35C20A17CEFE1D001B3A03 /* XDRefreshDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XDRefreshDemo-Info.plist"; sourceTree = "<group>"; };
+		3A35C20C17CEFE1D001B3A03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A35C20E17CEFE1D001B3A03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A35C21017CEFE1D001B3A03 /* XDRefreshDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XDRefreshDemo-Prefix.pch"; sourceTree = "<group>"; };
+		3A35C21117CEFE1D001B3A03 /* DXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DXAppDelegate.h; sourceTree = "<group>"; };
+		3A35C21217CEFE1D001B3A03 /* DXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DXAppDelegate.m; sourceTree = "<group>"; };
+		3A35C21517CEFE1D001B3A03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A35C21717CEFE1D001B3A03 /* DXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DXViewController.h; sourceTree = "<group>"; };
+		3A35C21817CEFE1D001B3A03 /* DXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DXViewController.m; sourceTree = "<group>"; };
+		3A35C21A17CEFE1D001B3A03 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A35C22017CEFE1D001B3A03 /* XDRefreshDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XDRefreshDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A35C22117CEFE1D001B3A03 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3A35C22917CEFE1D001B3A03 /* XDRefreshDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XDRefreshDemoTests-Info.plist"; sourceTree = "<group>"; };
+		3A35C22B17CEFE1D001B3A03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3A35C22D17CEFE1D001B3A03 /* XDRefreshDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDRefreshDemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A35C1FC17CEFE1D001B3A03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C20517CEFE1D001B3A03 /* CoreGraphics.framework in Frameworks */,
+				3A35C20717CEFE1D001B3A03 /* UIKit.framework in Frameworks */,
+				3A35C20317CEFE1D001B3A03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A35C21D17CEFE1D001B3A03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C22217CEFE1D001B3A03 /* XCTest.framework in Frameworks */,
+				3A35C22417CEFE1D001B3A03 /* UIKit.framework in Frameworks */,
+				3A35C22317CEFE1D001B3A03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A35C1F617CEFE1D001B3A03 = {
+			isa = PBXGroup;
+			children = (
+				3A35C20817CEFE1D001B3A03 /* XDRefreshDemo */,
+				3A35C22717CEFE1D001B3A03 /* XDRefreshDemoTests */,
+				3A35C20117CEFE1D001B3A03 /* Frameworks */,
+				3A35C20017CEFE1D001B3A03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A35C20017CEFE1D001B3A03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C1FF17CEFE1D001B3A03 /* XDRefreshDemo.app */,
+				3A35C22017CEFE1D001B3A03 /* XDRefreshDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A35C20117CEFE1D001B3A03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C20217CEFE1D001B3A03 /* Foundation.framework */,
+				3A35C20417CEFE1D001B3A03 /* CoreGraphics.framework */,
+				3A35C20617CEFE1D001B3A03 /* UIKit.framework */,
+				3A35C22117CEFE1D001B3A03 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A35C20817CEFE1D001B3A03 /* XDRefreshDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C21117CEFE1D001B3A03 /* DXAppDelegate.h */,
+				3A35C21217CEFE1D001B3A03 /* DXAppDelegate.m */,
+				3A35C21417CEFE1D001B3A03 /* Main.storyboard */,
+				3A35C21717CEFE1D001B3A03 /* DXViewController.h */,
+				3A35C21817CEFE1D001B3A03 /* DXViewController.m */,
+				3A35C21A17CEFE1D001B3A03 /* Images.xcassets */,
+				3A35C20917CEFE1D001B3A03 /* Supporting Files */,
+			);
+			path = XDRefreshDemo;
+			sourceTree = "<group>";
+		};
+		3A35C20917CEFE1D001B3A03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C20A17CEFE1D001B3A03 /* XDRefreshDemo-Info.plist */,
+				3A35C20B17CEFE1D001B3A03 /* InfoPlist.strings */,
+				3A35C20E17CEFE1D001B3A03 /* main.m */,
+				3A35C21017CEFE1D001B3A03 /* XDRefreshDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A35C22717CEFE1D001B3A03 /* XDRefreshDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C22D17CEFE1D001B3A03 /* XDRefreshDemoTests.m */,
+				3A35C22817CEFE1D001B3A03 /* Supporting Files */,
+			);
+			path = XDRefreshDemoTests;
+			sourceTree = "<group>";
+		};
+		3A35C22817CEFE1D001B3A03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C22917CEFE1D001B3A03 /* XDRefreshDemoTests-Info.plist */,
+				3A35C22A17CEFE1D001B3A03 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A35C1FE17CEFE1D001B3A03 /* XDRefreshDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A35C23117CEFE1D001B3A03 /* Build configuration list for PBXNativeTarget "XDRefreshDemo" */;
+			buildPhases = (
+				3A35C1FB17CEFE1D001B3A03 /* Sources */,
+				3A35C1FC17CEFE1D001B3A03 /* Frameworks */,
+				3A35C1FD17CEFE1D001B3A03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XDRefreshDemo;
+			productName = XDRefreshDemo;
+			productReference = 3A35C1FF17CEFE1D001B3A03 /* XDRefreshDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A35C21F17CEFE1D001B3A03 /* XDRefreshDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A35C23417CEFE1D001B3A03 /* Build configuration list for PBXNativeTarget "XDRefreshDemoTests" */;
+			buildPhases = (
+				3A35C21C17CEFE1D001B3A03 /* Sources */,
+				3A35C21D17CEFE1D001B3A03 /* Frameworks */,
+				3A35C21E17CEFE1D001B3A03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A35C22617CEFE1D001B3A03 /* PBXTargetDependency */,
+			);
+			name = XDRefreshDemoTests;
+			productName = XDRefreshDemoTests;
+			productReference = 3A35C22017CEFE1D001B3A03 /* XDRefreshDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A35C1F717CEFE1D001B3A03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DX;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = xieyajie;
+				TargetAttributes = {
+					3A35C21F17CEFE1D001B3A03 = {
+						TestTargetID = 3A35C1FE17CEFE1D001B3A03;
+					};
+				};
+			};
+			buildConfigurationList = 3A35C1FA17CEFE1D001B3A03 /* Build configuration list for PBXProject "XDRefreshDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A35C1F617CEFE1D001B3A03;
+			productRefGroup = 3A35C20017CEFE1D001B3A03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A35C1FE17CEFE1D001B3A03 /* XDRefreshDemo */,
+				3A35C21F17CEFE1D001B3A03 /* XDRefreshDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A35C1FD17CEFE1D001B3A03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C21B17CEFE1D001B3A03 /* Images.xcassets in Resources */,
+				3A35C20D17CEFE1D001B3A03 /* InfoPlist.strings in Resources */,
+				3A35C21617CEFE1D001B3A03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A35C21E17CEFE1D001B3A03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C22C17CEFE1D001B3A03 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A35C1FB17CEFE1D001B3A03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C21317CEFE1D001B3A03 /* DXAppDelegate.m in Sources */,
+				3A35C21917CEFE1D001B3A03 /* DXViewController.m in Sources */,
+				3A35C20F17CEFE1D001B3A03 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A35C21C17CEFE1D001B3A03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A35C22E17CEFE1D001B3A03 /* XDRefreshDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A35C22617CEFE1D001B3A03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A35C1FE17CEFE1D001B3A03 /* XDRefreshDemo */;
+			targetProxy = 3A35C22517CEFE1D001B3A03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A35C20B17CEFE1D001B3A03 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A35C20C17CEFE1D001B3A03 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3A35C21417CEFE1D001B3A03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A35C21517CEFE1D001B3A03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3A35C22A17CEFE1D001B3A03 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A35C22B17CEFE1D001B3A03 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A35C22F17CEFE1D001B3A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3A35C23017CEFE1D001B3A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A35C23217CEFE1D001B3A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
+				INFOPLIST_FILE = "XDRefreshDemo/XDRefreshDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3A35C23317CEFE1D001B3A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
+				INFOPLIST_FILE = "XDRefreshDemo/XDRefreshDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3A35C23517CEFE1D001B3A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XDRefreshDemo.app/XDRefreshDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "XDRefreshDemoTests/XDRefreshDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3A35C23617CEFE1D001B3A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XDRefreshDemo.app/XDRefreshDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
+				INFOPLIST_FILE = "XDRefreshDemoTests/XDRefreshDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A35C1FA17CEFE1D001B3A03 /* Build configuration list for PBXProject "XDRefreshDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A35C22F17CEFE1D001B3A03 /* Debug */,
+				3A35C23017CEFE1D001B3A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A35C23117CEFE1D001B3A03 /* Build configuration list for PBXNativeTarget "XDRefreshDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A35C23217CEFE1D001B3A03 /* Debug */,
+				3A35C23317CEFE1D001B3A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3A35C23417CEFE1D001B3A03 /* Build configuration list for PBXNativeTarget "XDRefreshDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A35C23517CEFE1D001B3A03 /* Debug */,
+				3A35C23617CEFE1D001B3A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A35C1F717CEFE1D001B3A03 /* Project object */;
+}
