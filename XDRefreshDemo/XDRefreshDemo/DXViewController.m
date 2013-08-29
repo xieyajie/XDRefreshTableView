@@ -7,8 +7,14 @@
 //
 
 #import "DXViewController.h"
+#import "XDRefreshTableView.h"
 
-@interface DXViewController ()
+@interface DXViewController ()<UITableViewDataSource, UITableViewDelegate, XDRefreshTableViewDelegate>
+{
+    XDRefreshTableView *_tableView;
+    
+    NSInteger _pageCount;
+}
 
 @end
 
@@ -18,6 +24,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    _pageCount = 1;
+    
+    _tableView = [[XDRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain pullDelegate:self];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -25,5 +37,82 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - TableView Delegate
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+#pragma mark - TableView DataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20 * _pageCount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
+    
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"第 %i 行", indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - scroll delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_tableView tableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [_tableView tableViewDidEndDragging:scrollView];}
+
+
+#pragma mark - Refresh Delegate
+//下拉加载上一天
+- (void)pullingTableViewDidStartRefreshing:(XDRefreshTableView *)tableView
+{
+    [self refresh];
+}
+
+//上拉加载
+- (void)pullingTableViewDidStartLoading:(XDRefreshTableView *)tableView
+{
+    [self load];
+}
+
+#pragma mark - private
+
+- (void)refresh
+{
+    [_tableView tableViewDidFinishedRefreshWithCompletion:^(BOOL finish){
+        _pageCount = 1;
+        [_tableView reloadData];
+    }];
+}
+
+- (void)load
+{
+    [_tableView tableViewDidFinishedLoadingWithCompletion:^(BOOL finish){
+        _pageCount++;
+        [_tableView reloadData];
+    }];
+}
+
 
 @end

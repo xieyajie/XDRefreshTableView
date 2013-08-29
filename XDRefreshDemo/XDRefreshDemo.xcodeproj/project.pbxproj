@@ -21,6 +21,8 @@
 		3A35C22417CEFE1D001B3A03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A35C20617CEFE1D001B3A03 /* UIKit.framework */; };
 		3A35C22C17CEFE1D001B3A03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A35C22A17CEFE1D001B3A03 /* InfoPlist.strings */; };
 		3A35C22E17CEFE1D001B3A03 /* XDRefreshDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C22D17CEFE1D001B3A03 /* XDRefreshDemoTests.m */; };
+		3A35C24917CF3699001B3A03 /* XDPullingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C24617CF3699001B3A03 /* XDPullingView.m */; };
+		3A35C24A17CF3699001B3A03 /* XDRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A35C24817CF3699001B3A03 /* XDRefreshTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,11 @@
 		3A35C22917CEFE1D001B3A03 /* XDRefreshDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XDRefreshDemoTests-Info.plist"; sourceTree = "<group>"; };
 		3A35C22B17CEFE1D001B3A03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A35C22D17CEFE1D001B3A03 /* XDRefreshDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDRefreshDemoTests.m; sourceTree = "<group>"; };
+		3A35C24417CF3699001B3A03 /* XDLocalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDLocalDefine.h; sourceTree = "<group>"; };
+		3A35C24517CF3699001B3A03 /* XDPullingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDPullingView.h; sourceTree = "<group>"; };
+		3A35C24617CF3699001B3A03 /* XDPullingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDPullingView.m; sourceTree = "<group>"; };
+		3A35C24717CF3699001B3A03 /* XDRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDRefreshTableView.h; sourceTree = "<group>"; };
+		3A35C24817CF3699001B3A03 /* XDRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDRefreshTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +119,7 @@
 		3A35C20817CEFE1D001B3A03 /* XDRefreshDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3A35C24317CF3699001B3A03 /* XDRefreshTableView */,
 				3A35C21117CEFE1D001B3A03 /* DXAppDelegate.h */,
 				3A35C21217CEFE1D001B3A03 /* DXAppDelegate.m */,
 				3A35C21417CEFE1D001B3A03 /* Main.storyboard */,
@@ -150,6 +158,18 @@
 				3A35C22A17CEFE1D001B3A03 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A35C24317CF3699001B3A03 /* XDRefreshTableView */ = {
+			isa = PBXGroup;
+			children = (
+				3A35C24417CF3699001B3A03 /* XDLocalDefine.h */,
+				3A35C24517CF3699001B3A03 /* XDPullingView.h */,
+				3A35C24617CF3699001B3A03 /* XDPullingView.m */,
+				3A35C24717CF3699001B3A03 /* XDRefreshTableView.h */,
+				3A35C24817CF3699001B3A03 /* XDRefreshTableView.m */,
+			);
+			path = XDRefreshTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A35C24917CF3699001B3A03 /* XDPullingView.m in Sources */,
 				3A35C21317CEFE1D001B3A03 /* DXAppDelegate.m in Sources */,
+				3A35C24A17CF3699001B3A03 /* XDRefreshTableView.m in Sources */,
 				3A35C21917CEFE1D001B3A03 /* DXViewController.m in Sources */,
 				3A35C20F17CEFE1D001B3A03 /* main.m in Sources */,
 			);
@@ -378,6 +400,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "XDRefreshDemo/XDRefreshDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -391,6 +414,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XDRefreshDemo/XDRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "XDRefreshDemo/XDRefreshDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -455,6 +479,7 @@
 				3A35C23317CEFE1D001B3A03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A35C23417CEFE1D001B3A03 /* Build configuration list for PBXNativeTarget "XDRefreshDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +488,7 @@
 				3A35C23617CEFE1D001B3A03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
