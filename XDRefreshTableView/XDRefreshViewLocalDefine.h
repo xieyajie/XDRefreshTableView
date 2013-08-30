@@ -1,13 +1,13 @@
 //
-//  XDLocalDefine.h
+//  XDRefreshViewLocalDefine.h
 //  XDRefreshDemo
 //
 //  Created by xieyajie on 13-8-29.
 //  Copyright (c) 2013年 xieyajie. All rights reserved.
 //
 
-#ifndef XDRefreshDemo_XDLocalDefine_h
-#define XDRefreshDemo_XDLocalDefine_h
+#ifndef XDRefreshDemo_XDRefreshViewLocalDefine_h
+#define XDRefreshDemo_XDRefreshViewLocalDefine_h
 
 #if !defined __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0
 # define KTextAlignmentLeft UITextAlignmentLeft

@@ -8,7 +8,7 @@
 
 #import "XDRefreshTableView.h"
 #import "XDPullingView.h"
-#import "XDLocalDefine.h"
+#import "XDRefreshViewLocalDefine.h"
 
 @interface XDRefreshTableView()
 
@@ -45,15 +45,17 @@
     if (self) {
         // Initialization code
         _headerPullingView = [[XDPullingView alloc] initWithFrame:CGRectMake(0, -frame.size.height, frame.size.width, frame.size.height) atViewTop:YES];
+        [self addSubview:_headerPullingView];
         
         _footerPullingView = [[XDPullingView alloc] initWithFrame:CGRectMake(0, frame.size.height, frame.size.width, frame.size.height) atViewTop:NO];
+        [self addSubview:_footerPullingView];
         
         [self addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
         
         self.headerOffsetY = KREFRESHVIEWMAXOFFSETY;
         self.footerOffsetY = KREFRESHVIEWMAXOFFSETY;
-        self.showHeaderPulling = NO;
-        self.showFooterPulling = NO;
+        self.showHeaderPulling = YES;
+        self.showFooterPulling = YES;
     }
     return self;
 }
@@ -82,36 +84,51 @@
 
 #pragma mark - set
 
-- (void)setShowFooterPulling:(BOOL)show
-{
-    if (_showFooterPulling != show) {
-        _showFooterPulling = show;
-        
-        if (_footerPullingView != nil && show) {
-            [self addSubview:_footerPullingView];
-        }
-        else if(!show)
-        {
-            _footerPullingView.currentState = XDStateNormal;
-            [_footerPullingView removeFromSuperview];
-        }
-    }
-}
-
 - (void)setShowHeaderPulling:(BOOL)show
 {
-    if (_showHeaderPulling != show) {
-        _showHeaderPulling = show;
-        
-        if (_headerPullingView != nil && show) {
-            [self addSubview:_headerPullingView];
-        }
-        else if(!show)
-        {
-            _headerPullingView.currentState = XDStateNormal;
-            [_headerPullingView removeFromSuperview];
-        }
+    _showHeaderPulling = show;
+    _headerPullingView.hidden = !show;
+    if(!show)
+    {
+        _headerPullingView.currentState = XDStateNormal;
     }
+    
+//    if (_showHeaderPulling != show) {
+//        _showHeaderPulling = show;
+//        
+//        if (_headerPullingView != nil && show) {
+//            [self addSubview:_headerPullingView];
+//        }
+//        else if(!show)
+//        {
+//            _headerPullingView.currentState = XDStateNormal;
+//            [_headerPullingView removeFromSuperview];
+//        }
+//    }
+}
+
+- (void)setShowFooterPulling:(BOOL)show
+{
+    _showFooterPulling = show;
+    _footerPullingView.hidden = !show;
+    if(!show)
+    {
+        _footerPullingView.currentState = XDStateNormal;
+    }
+
+    
+//    if (_showFooterPulling != show) {
+//        _showFooterPulling = show;
+//        
+//        if (_footerPullingView != nil && show) {
+//            [self addSubview:_footerPullingView];
+//        }
+//        else if(!show)
+//        {
+//            _footerPullingView.currentState = XDStateNormal;
+//            [_footerPullingView removeFromSuperview];
+//        }
+//    }
 }
 
 - (void)setHeaderOffsetY:(CGFloat)offsetY
@@ -275,7 +292,9 @@
             [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
             } completion:^(BOOL finish){
-                completion(finish);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(finish);
+                });
             }];
         }
     }
@@ -297,11 +316,32 @@
             [UIView animateWithDuration:0.5f delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
                 self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
             } completion:^(BOOL finish){
-                completion(finish);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(finish);
+                });
             }];
         }
     }
     
+}
+
+#pragma mark - 自动下拉
+
+//自动下拉，动画完成后调用代理方法
+- (void)launchRefreshing
+{
+    if (self.contentOffset.y > 0) {
+        [self scrollRectToVisible:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) animated:YES];
+    }
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        self.contentInset = UIEdgeInsetsMake(_headerOffsetY + 5, 0, 0, 0);
+    } completion:^(BOOL finish){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _headerPullingView.currentState = XDStatePulling;
+            [self tableViewDidEndDragging:self];
+        });
+    }];
 }
 
 - (void)launchRefreshingWithCompletion:(void (^)(BOOL finished))completion
@@ -311,9 +351,31 @@
     }
     
     [UIView animateWithDuration:0.5f animations:^{
-        self.contentInset = UIEdgeInsetsMake(_headerOffsetY, 0, 0, 0);
+        self.contentInset = UIEdgeInsetsMake(_headerOffsetY + 5, 0, 0, 0);
     } completion:^(BOOL finish){
-        completion(finish);
+        _headerPullingView.currentState = XDStatePulling;
+        
+        if (_headerPullingView.currentState == XDStateLoading || _headerPullingView.currentState == XDStateHitTheEnd) {
+            return;
+        }
+        
+        if (_headerPullingView.currentState == XDStatePulling) {
+            _headerPullingView.currentState = XDStateLoading;
+            
+            [UIView animateWithDuration:0.5f animations:^{
+                self.contentInset = UIEdgeInsetsMake(_headerOffsetY, 0, 0, 0);
+            }];
+            
+            _headerPullingView.loading = NO;
+            [UIView animateWithDuration:0.5f animations:^{
+                self.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                [_headerPullingView setState:XDStateNormal animated:NO];
+            }];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(finish);
+        });
     }];
 }
 
