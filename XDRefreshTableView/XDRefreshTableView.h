@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDPullingView.h"
 
 @protocol XDRefreshTableViewDelegate;
 
-@class XDPullingView;
 @interface XDRefreshTableView : UITableView
+{
+    UILabel *_messageLabel;
+}
 
 @property (nonatomic, unsafe_unretained) id<XDRefreshTableViewDelegate> pullDelegate;
 
@@ -41,8 +44,13 @@
 - (void)tableViewDidFinishedRefreshWithCompletion:(void (^)(BOOL finished))completion;
 - (void)tableViewDidFinishedLoadingWithCompletion:(void (^)(BOOL finished))completion;
 
-//自动下拉
+//自动下拉，动画完成后调用代理方法
+- (void)launchRefreshing;
+//自动下拉，只加载动画
 - (void)launchRefreshingWithCompletion:(void (^)(BOOL finished))completion;
+
+- (void)hideMessageAnimation;
+- (void)showMessage:(NSString *)message duration:(NSTimeInterval)duration;
 
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "XDRefreshTableView.h"
-#import "XDPullingView.h"
 #import "XDRefreshViewLocalDefine.h"
 
 @interface XDRefreshTableView()
@@ -74,13 +73,11 @@
 
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
-     [super drawRect:rect];
-     
-     
- }
+// - (void)drawRect:(CGRect)rect
+// {
+// // Drawing code
+//     [super drawRect:rect];
+// }
 
 #pragma mark - set
 
@@ -92,19 +89,6 @@
     {
         _headerPullingView.currentState = XDStateNormal;
     }
-    
-//    if (_showHeaderPulling != show) {
-//        _showHeaderPulling = show;
-//        
-//        if (_headerPullingView != nil && show) {
-//            [self addSubview:_headerPullingView];
-//        }
-//        else if(!show)
-//        {
-//            _headerPullingView.currentState = XDStateNormal;
-//            [_headerPullingView removeFromSuperview];
-//        }
-//    }
 }
 
 - (void)setShowFooterPulling:(BOOL)show
@@ -115,20 +99,6 @@
     {
         _footerPullingView.currentState = XDStateNormal;
     }
-
-    
-//    if (_showFooterPulling != show) {
-//        _showFooterPulling = show;
-//        
-//        if (_footerPullingView != nil && show) {
-//            [self addSubview:_footerPullingView];
-//        }
-//        else if(!show)
-//        {
-//            _footerPullingView.currentState = XDStateNormal;
-//            [_footerPullingView removeFromSuperview];
-//        }
-//    }
 }
 
 - (void)setHeaderOffsetY:(CGFloat)offsetY
@@ -264,7 +234,7 @@
         if (_footerPullingView.currentState == XDStatePulling) {
             _footerPullingView.currentState = XDStateLoading;
             
-            [UIView animateWithDuration:0.5f animations:^{
+            [UIView animateWithDuration:.5f animations:^{
                 self.contentInset = UIEdgeInsetsMake(-_footerOffsetY, 0, 0, 0);
             }];
             
@@ -378,6 +348,38 @@
         });
     }];
 }
+
+- (void)hideMessageAnimation
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        _messageLabel.alpha = 0.0;
+    }];
+}
+
+- (void)showMessage:(NSString *)message duration:(NSTimeInterval)duration
+{
+    if (_messageLabel == nil) {
+        _messageLabel = [[UILabel alloc] init];
+        _messageLabel.alpha = 0.0;
+        _messageLabel.layer.cornerRadius = 6.0;
+        _messageLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.9];
+        _messageLabel.textColor = [UIColor whiteColor];
+        _messageLabel.textAlignment = UITextAlignmentCenter;
+        _messageLabel.font = [UIFont boldSystemFontOfSize:18.0];
+        [self.superview addSubview:_messageLabel];
+    }
+    _messageLabel.frame = CGRectMake(self.frame.origin.x + 5.0, self.frame.origin.y + 4.0, self.frame.size.width - 10.0, 30.0);
+    
+    if (message.length) {
+        _messageLabel.text = message;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            _messageLabel.alpha = 1.0;
+        }];
+        [self performSelector:@selector(hideMessageAnimation) withObject:nil afterDelay:duration];
+    }
+}
+
 
 
 @end
