@@ -55,6 +55,7 @@
         self.footerOffsetY = KREFRESHVIEWMAXOFFSETY;
         self.showHeaderPulling = YES;
         self.showFooterPulling = YES;
+        self.separatorAdapterContent = YES;
     }
     return self;
 }

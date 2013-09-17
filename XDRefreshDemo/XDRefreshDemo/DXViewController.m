@@ -35,6 +35,7 @@
     _tableView.separatorAdapterContent = NO;
     _tableView.showHeaderPulling = YES;
     _tableView.showFooterPulling = YES;
+    _tableView.separatorAdapterContent = YES;
     
     [self.view addSubview:_tableView];
 }
