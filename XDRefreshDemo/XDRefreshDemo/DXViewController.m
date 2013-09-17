@@ -9,6 +9,8 @@
 #import "DXViewController.h"
 #import "XDRefreshTableView.h"
 
+#import "XDRefreshViewLocalDefine.h"
+
 @interface DXViewController ()<UITableViewDataSource, UITableViewDelegate, XDRefreshTableViewDelegate>
 {
     XDRefreshTableView *_tableView;

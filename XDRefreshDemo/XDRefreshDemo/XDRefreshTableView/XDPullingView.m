@@ -8,7 +8,7 @@
 
 #import "XDPullingView.h"
 
-#import "XDLocalDefine.h"
+#import "XDRefreshViewLocalDefine.h"
 
 @interface XDPullingView()
 
